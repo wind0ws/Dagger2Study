@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.threshold.dagger2study.App;
 import com.threshold.dagger2study.R;
+import com.threshold.dagger2study.component.DaggerExtendMainComponent;
 import com.threshold.dagger2study.component.DaggerMainComponent;
 import com.threshold.dagger2study.model.GreetManager;
 import com.threshold.dagger2study.module.MainModule;
@@ -27,7 +28,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     private static final String TAG = "MainActivity";
 
-
     @Inject
     App app;
 
@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Inject
     MainPresenter mMainPresenter;
+
+    @Inject
+    MainView mMainView;
 
 
     @Bind(R.id.button1)
@@ -56,12 +59,21 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     private void setUpMainComponent() {
-        DaggerMainComponent.builder()
+        DaggerExtendMainComponent.builder()
                 .appComponent(App.getInstance(this).getAppComponent())
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
+
+//        DaggerMainComponent.builder()
+//                .appComponent(App.getInstance(this).getAppComponent())
+//                .mainModule(new MainModule(this))
+//                .build()
+//                .inject(this);
+
         Log.w(TAG, "App injected?" + String.valueOf(app != null));
+        Log.w(TAG, "MainView injected?" + String.valueOf(mMainView != null));
+
     }
 
     @OnClick({R.id.button1,R.id.button2})

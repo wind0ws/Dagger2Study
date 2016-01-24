@@ -14,7 +14,7 @@ public class ToastUtil {
     private Context context;
 
     @Inject
-    public ToastUtil(App context) {
+    public ToastUtil(Context context) {
         this.context = context;
     }
 

@@ -7,7 +7,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class HelloModule {
+public class GreetModule {
 
     @Provides
     public GreetManager provideGreetManager(ToastUtil toastUtil) {
