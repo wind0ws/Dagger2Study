@@ -1,5 +1,7 @@
 package com.threshold.dagger2study.module;
 
+import android.content.Context;
+
 import com.threshold.dagger2study.App;
 import com.threshold.dagger2study.utils.ToastUtil;
 
@@ -10,7 +12,7 @@ import dagger.Provides;
 public class ToastModule {
 
     @Provides
-    public ToastUtil provideToastUtil(App application) {
-        return new ToastUtil(application);
+    public ToastUtil provideToastUtil(Context context) {
+        return new ToastUtil(context);
     }
 }

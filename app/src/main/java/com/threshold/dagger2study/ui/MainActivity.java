@@ -19,6 +19,7 @@ import com.threshold.dagger2study.ui.interfaces.MainView;
 import com.threshold.dagger2study.utils.ToastUtil;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
     App app;
 
     @Inject
+    Provider<ToastUtil> mToastUtilProvider;
+
+    @Inject
     GreetManager mGreetManager;
 
     @Inject
@@ -39,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Inject
     MainView mMainView;
+
 
 
     @Bind(R.id.button1)
@@ -71,6 +76,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
 //                .build()
 //                .inject(this);
 
+        Log.w(TAG, "ToastUtil injected?" + String.valueOf(mToastUtilProvider != null));
+        ToastUtil toastUtil1 = mToastUtilProvider.get();
+        ToastUtil toastUtil2 =mToastUtilProvider.get();
+        Log.w(TAG, "toastUtil1 Equals toastUtil2 (expect false) ?"+String.valueOf(toastUtil1 == toastUtil2));//expect false,because toastUtil1 and toastUtil2 is different instance!
         Log.w(TAG, "App injected?" + String.valueOf(app != null));
         Log.w(TAG, "MainView injected?" + String.valueOf(mMainView != null));
 
