@@ -1,5 +1,6 @@
 package com.threshold.dagger2study.module;
 
+import com.threshold.dagger2study.annotation.UserScope;
 import com.threshold.dagger2study.model.data.User;
 
 import dagger.Module;
@@ -8,6 +9,8 @@ import dagger.Provides;
 @Module
 public class UserModule {
 
+
+    @UserScope
     @Provides
     public User provideUser() {
         User user = new User();

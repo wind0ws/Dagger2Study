@@ -25,10 +25,12 @@ public class App extends Application {
 
     AppComponent mAppComponent;
 
+    UserComponent mUserComponent;
+
     @Inject
     Lazy<CrashHandlerUtil> mCrashHandlerUtilLazy;
 
-   // @Inject
+    @Inject
     User mUser;
 
     @Override
@@ -50,11 +52,14 @@ public class App extends Application {
         mAppComponent = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .build();
-        UserComponent userComponent = mAppComponent.createUserComponent(new UserModule());
-//        userComponent.inject(this);
-        mUser=userComponent.getUser();
-        mAppComponent.inject(this);
+        // mAppComponent.inject(this);
+        mUserComponent = mAppComponent.createUserComponent(new UserModule());
+        mUserComponent.inject(this);//App can only be inject once!!! You can't declare inject both on AppComponent and UserComponent
         Log.d(TAG, "mUser!=null ??" + String.valueOf(mUser != null));
+    }
+
+    public UserComponent getUserComponent() {
+        return mAppComponent.createUserComponent(new UserModule());
     }
 
     public AppComponent getAppComponent() {
@@ -64,5 +69,7 @@ public class App extends Application {
     public static App getInstance(Context context) {
         return (App)context.getApplicationContext();
     }
+
+
 
 }

@@ -13,6 +13,7 @@ import com.threshold.dagger2study.R;
 import com.threshold.dagger2study.component.DaggerExtendMainComponent;
 import com.threshold.dagger2study.component.DaggerMainComponent;
 import com.threshold.dagger2study.model.GreetManager;
+import com.threshold.dagger2study.model.data.User;
 import com.threshold.dagger2study.module.MainModule;
 import com.threshold.dagger2study.presenter.interfaces.MainPresenter;
 import com.threshold.dagger2study.ui.interfaces.MainView;
@@ -45,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     MainView mMainView;
 
 
-
     @Bind(R.id.button1)
     Button mButton1;
     @Bind(R.id.button2)
@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
                 .mainModule(new MainModule(this))
                 .build()
                 .inject(this);
+       // App.getInstance(this).getUserComponent().inject(this);
 
 //        DaggerMainComponent.builder()
 //                .appComponent(App.getInstance(this).getAppComponent())
