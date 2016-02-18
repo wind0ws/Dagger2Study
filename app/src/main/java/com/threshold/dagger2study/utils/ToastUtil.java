@@ -3,7 +3,6 @@ package com.threshold.dagger2study.utils;
 import android.content.Context;
 import android.widget.Toast;
 
-import com.threshold.dagger2study.App;
 
 import javax.inject.Inject;
 
@@ -11,6 +10,7 @@ import javax.inject.Inject;
  * Created by Threshold on 2016/1/18.
  */
 public class ToastUtil {
+
     private Context context;
 
     @Inject

@@ -1,5 +1,6 @@
 package com.threshold.dagger2study.model;
 
+import com.threshold.dagger2study.annotation.ActivityScope;
 import com.threshold.dagger2study.utils.ToastUtil;
 
 import javax.inject.Inject;
@@ -11,7 +12,7 @@ public class GreetManager {
 
     private ToastUtil toastUtil;
     @Inject
-    public GreetManager(ToastUtil toastUtil) {
+    public GreetManager(@ActivityScope ToastUtil toastUtil) {
         this.toastUtil = toastUtil;
     }
 
@@ -20,7 +21,7 @@ public class GreetManager {
     }
 
     public void showHello() {
-        toastUtil.showShort("Hello");
+        toastUtil.showShort("GreetManager: Hello");
     }
 
 }
