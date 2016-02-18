@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.threshold.dagger2study.App;
 import com.threshold.dagger2study.R;
-import com.threshold.dagger2study.annotation.Named;
 import com.threshold.dagger2study.component.DaggerMainComponent;
 import com.threshold.dagger2study.model.GreetManager;
 import com.threshold.dagger2study.model.HelloManager;
@@ -21,6 +20,7 @@ import com.threshold.dagger2study.ui.interfaces.MainView;
 import com.threshold.dagger2study.utils.ToastUtil;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.inject.Provider;
 
 import butterknife.Bind;
@@ -31,8 +31,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     private static final String TAG = "MainActivity";
 
-//    @Inject
-//    App app;
+    @Inject
+    App app;
 
     @Inject
     Provider<ToastUtil> mToastUtilProvider;
@@ -40,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements MainView {
     @Inject
     GreetManager mGreetManager; //这个是通过构造函数直接注入的。ToastUtil中的Context由ExtendMainComponent的依赖AppComponent来提供
 
-    //@Named("English")
     @Inject
     HelloManager mHelloManager;
 
